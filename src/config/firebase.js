@@ -5,12 +5,12 @@ import { getFirestore } from 'firebase/firestore';
 // Replace with your Firebase config
 // Get this from Firebase Console: Project Settings → Web App
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || 'AIzaSyDemoKeyChangeThis',
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN || 'spelling-app-demo.firebaseapp.com',
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || 'spelling-app-demo',
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET || 'spelling-app-demo.appspot.com',
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID || '123456789',
-  appId: process.env.REACT_APP_FIREBASE_APP_ID || '1:123456789:web:abcdef123456',
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
