@@ -9,19 +9,53 @@ A personalized spelling improvement app that helps you learn from your own missp
 - **Audio-Based Tests**: Daily spelling tests where words are spoken out loud
 - **Progressive Hints**: Three levels of hints before revealing the answer
 - **Detailed Statistics**: Track accuracy, category breakdown, and words to focus on
-- **Local Storage**: All data stored locally in your browser - no account needed
-- **Zero Dependencies**: Lightweight, uses Web Speech API for audio
+- **Cloud Sync**: All data synced to Firebase - access your words on any device
+- **Google Sign-In**: Easy authentication with your Google account
+- **Zero Setup**: Uses Web Speech API for audio, no external services needed
 
 ## Getting Started 🚀
 
 ### Prerequisites
 - Node.js 14+ and npm
+- Firebase project (free tier available at https://firebase.google.com)
+
+### Firebase Setup
+
+1. **Create a Firebase Project**:
+   - Go to https://firebase.google.com
+   - Click "Get Started"
+   - Create a new project
+   - Choose "Create Project"
+
+2. **Enable Google Sign-In**:
+   - In Firebase Console, go to Authentication → Sign-in Method
+   - Enable "Google" provider
+   - Add your email as a test user (for development)
+
+3. **Get Your Firebase Config**:
+   - In Firebase Console, go to Project Settings → Web Apps
+   - Add a web app (if not already there)
+   - Copy the config values
+
+4. **Create `.env.local` in your project**:
+   ```bash
+   cp .env.example .env.local
+   ```
+   - Edit `.env.local` and paste your Firebase config values:
+   ```
+   REACT_APP_FIREBASE_API_KEY=your_api_key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
+   REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+   REACT_APP_FIREBASE_APP_ID=your_app_id
+   ```
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/MatthewBrandonBowers/spelling-app.git
 cd spelling-app
 
 # Install dependencies
@@ -42,7 +76,11 @@ npm run preview
 
 ## How to Use 📖
 
-### 1. Add Words
+### 1. Sign In
+- Open the app and sign in with your Google account
+- Your account is now set up with cloud sync
+
+### 2. Add Words
 - Go to "Add Words" tab
 - Type a misspelled word
 - Get automatic spell-checking suggestions
@@ -50,7 +88,7 @@ npm run preview
 - Choose a category and spelling rule (optional)
 - Click "Add Word"
 
-### 2. Take a Test
+### 3. Take a Test
 - Go to "Daily Test" tab
 - The app speaks each word
 - Type your spelling attempt

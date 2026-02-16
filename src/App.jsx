@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useAuth } from './context/AuthContext';
+import Login from './components/Login';
 import WordInput from './components/WordInput';
 import WordList from './components/WordList';
 import DailyTest from './components/DailyTest';
@@ -6,14 +8,17 @@ import Stats from './components/Stats';
 import './App.css';
 
 function App() {
+  const { user, loading, logOut } = useAuth();
   const [currentPage, setCurrentPage] = useState('home');
   const [wordCount, setWordCount] = useState(0);
+  const [showUserMenu, setShowUserMenu] = useState(false);
 
   useEffect(() => {
     updateWordCount();
   }, [currentPage]);
 
-  const updateWordCount = () => {
+  const updateWordCount = async () => {
+    // This will be updated to use Firebase storage later
     const data = localStorage.getItem('spelling_app_data');
     if (data) {
       const parsed = JSON.parse(data);
@@ -24,6 +29,30 @@ function App() {
   const handleWordAdded = () => {
     updateWordCount();
   };
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+      setShowUserMenu(false);
+    } catch (error) {
+      console.error('Sign out failed:', error);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="app">
+        <div className="loading-screen">
+          <div className="spinner"></div>
+          <p>Loading Spelling Master...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <Login />;
+  }
 
   return (
     <div className="app">
@@ -64,6 +93,47 @@ function App() {
             >
               Statistics
             </button>
+
+            <div className="user-menu-wrapper">
+              <button
+                className="user-menu-btn"
+                onClick={() => setShowUserMenu(!showUserMenu)}
+                title={user.displayName || user.email}
+              >
+                {user.photoURL ? (
+                  <img src={user.photoURL} alt="Profile" className="user-avatar" />
+                ) : (
+                  <span className="user-avatar-default">
+                    {(user.displayName || user.email)?.[0]?.toUpperCase()}
+                  </span>
+                )}
+                <span className="user-name">
+                  {user.displayName ? user.displayName.split(' ')[0] : 'Account'}
+                </span>
+              </button>
+
+              {showUserMenu && (
+                <div className="user-dropdown">
+                  <div className="dropdown-header">
+                    <div className="user-info">
+                      {user.photoURL && (
+                        <img src={user.photoURL} alt="Profile" className="dropdown-avatar" />
+                      )}
+                      <div>
+                        <div className="dropdown-name">{user.displayName || 'User'}</div>
+                        <div className="dropdown-email">{user.email}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    className="dropdown-signout"
+                    onClick={handleSignOut}
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </nav>
