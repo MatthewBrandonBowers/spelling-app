@@ -1,0 +1,418 @@
+.daily-test {
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.no-words-message,
+.loading-message {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loading-message {
+  color: #999;
+  font-size: 1.1rem;
+}
+
+.no-words-message h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.no-words-message p {
+  color: #666;
+}
+
+.test-progress {
+  margin-bottom: 2rem;
+}
+
+.test-progress span {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #45a049);
+  transition: width 0.3s ease;
+}
+
+.test-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.test-container h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.word-section {
+  margin-bottom: 2rem;
+}
+
+.word-display {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.instruction {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.speak-btn {
+  padding: 1rem 2rem;
+  background: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.speak-btn:hover:not(:disabled) {
+  background: #1976D2;
+  transform: scale(1.05);
+}
+
+.speak-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.speak-btn.speaking {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.word-info {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.info-badge {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #1565c0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.answer-form {
+  margin-bottom: 1.5rem;
+}
+
+.answer-form input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s;
+}
+
+.answer-form input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.form-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .form-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+.submit-btn,
+.hint-btn,
+.skip-btn,
+.next-btn,
+.show-answer-btn {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.submit-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+.submit-btn:hover {
+  background: #45a049;
+}
+
+.hint-btn {
+  background: #FF9800;
+  color: white;
+}
+
+.hint-btn:hover {
+  background: #F57C00;
+}
+
+.skip-btn {
+  background: #f5f5f5;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.skip-btn:hover {
+  background: #e0e0e0;
+}
+
+.feedback {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.correct-feedback {
+  background: #e8f5e9;
+  border-left: 4px solid #2e7d32;
+  color: #2e7d32;
+}
+
+.incorrect-feedback {
+  background: #ffebee;
+  border-left: 4px solid #c62828;
+  color: #c62828;
+}
+
+.feedback p {
+  margin: 0 0 0.5rem 0;
+}
+
+.next-actions,
+.next-btn,
+.show-answer-btn {
+  margin-top: 1rem;
+}
+
+.next-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .next-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+.next-btn,
+.show-answer-btn {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: block;
+  width: 100%;
+  font-family: inherit;
+}
+
+.next-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+.next-btn:hover {
+  background: #45a049;
+}
+
+.show-answer-btn {
+  background: #2196F3;
+  color: white;
+}
+
+.show-answer-btn:hover {
+  background: #1976D2;
+}
+
+.learning-tip {
+  background: #fff3cd;
+  border-left: 4px solid #ff9800;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 2rem;
+}
+
+.learning-tip h4 {
+  margin: 0 0 0.5rem 0;
+  color: #e65100;
+}
+
+.tip-text {
+  margin: 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Test Completion Styles */
+.test-completed {
+  text-align: center;
+}
+
+.test-completed h2 {
+  color: #2e7d32;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.results-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.result-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-label {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.result-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.result-value.excellent {
+  color: #2e7d32;
+}
+
+.result-value.good {
+  color: #ff9800;
+}
+
+.result-value.needs-work {
+  color: #d32f2f;
+}
+
+.correct-count {
+  color: #2e7d32;
+}
+
+.results-details {
+  background: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 4px;
+  text-align: left;
+  margin-bottom: 2rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.results-details h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+.result-item.correct {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.result-item.incorrect {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.result-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.result-word {
+  font-weight: 500;
+}
+
+.restart-btn {
+  padding: 1rem 2rem;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.restart-btn:hover {
+  background: #45a049;
+}

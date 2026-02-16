@@ -1,0 +1,47 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: #333;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:focus-visible {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}
+
+hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+}
+
